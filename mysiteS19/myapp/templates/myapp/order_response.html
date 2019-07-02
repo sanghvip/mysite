@@ -1,0 +1,52 @@
+{% extends 'myapp/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block about %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+{% block product %}
+<header class="masthead">
+
+      <div class="container-fluid d-flex h-100 align-items-center">
+
+          <br/>
+
+            <div class="card h-80 w-100">
+
+
+            <div  class="card-header text-center">
+
+                {% if msg %}
+
+
+    {% endif %}
+            <!-- <h2 class="display-2" >List of product</h2> --->
+                <label  style="font-size: 35px; !important;">Notification</label>
+            </div>
+
+                <div class="card-body " style="text-align: center">
+
+                <strong>{{ msg }}</strong>
+                </div>
+
+
+            </div>
+
+
+
+
+    </div>
+
+
+
+  </header>
+
+{% endblock %}
+        {% if msg %}
+        <h2>Notification</h2>
+            <strong>{{ msg }}</strong>
+    {% endif %}

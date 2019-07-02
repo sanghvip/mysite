@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Sports Line</title>
+
+  <!-- Bootstrap core CSS -->
+ <link rel="stylesheet" type="text/css" href="{% static 'myapp/bootstrap.min.css'%}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="{% static 'myapp/js/grayscale.min.js'%}"></script>
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'myapp/vendor/fontawesome-free/css/all.min.css' %}"rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'myapp/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top" id="mainNav">
+    <div class="container">
+        <img src="{%static 'myapp/img/icon.png'%}" style="width: 8% " alt="">
+      <a class="navbar-brand js-scroll-trigger" href="/myapp/index/">Sports Line</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+         {% if request.user.is_authenticated %}
+
+              <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/myapp/index/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/myapp/about/">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/myapp/products/">Product</a>
+          </li>
+             <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'myapp:my_order' %}">My Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'myapp:user_logout' %}">Logout</a>
+          </li>
+
+            {% else %}
+
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'myapp:signup' %}"><label>SignUp here</label> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'password_reset' %}">Forgot Password</a>
+          </li>
+          {% comment %}
+{% endcomment %}
+          {% endif %}
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+
+{% block head %}
+
+<header class="masthead">
+
+    <div class="container d-flex h-100 align-items-center">
+    {% if request.user.is_authenticated %}
+    {% block myhdg %}
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">Sports Line</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">A place for every sports lover.</h2>
+
+      </div>
+        {% endblock %}
+         {% else %}
+             <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">Sports Line</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">A place for every sports lover.</h2>
+          {% endif %}
+
+    </div>
+
+</header>
+  {% endblock %}
+
+
+  {% block about %}
+
+  <!-- About Section -->
+  <section id="about" class="about-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">Know Us </h2>
+         <h4 class="font-italic"> <p class="text-white-50">Life sports is one of the biggest stores in windsor city. It provides around 100+ different brands and varieties.
+    It consists of brands such as Puma, Nike, Foot Looker, Champs Sports, Eastbay, Kids Foot Locker and Runners Point.
+        </h4>
+           <h3 class="text-white">
+          Our Motive:
+          </h3>
+          <h4 class="font-italic text-white-50">
+            " Inspire and empower consumers making their lifestyle healthy and comfortable "
+            We strive the best in everything we do. We act honestly, ethically and honorably.
+          </h4>
+          </p>
+        </div>
+      </div>
+      <img src="{%static 'myapp/img/ipad.png'%}" class="img-fluid" alt="">
+    </div>
+  </section>
+  {% endblock %}
+
+  {% block product %}
+ <!-- base Section -->
+
+
+
+  {% endblock %}
+
+  {% if request.user.is_authenticated %}
+
+  {% endif %}
+
+
+
+  {% block login %}
+
+  <!-- Login Section -->
+  <section id="login" class="signup-section">
+    <div class="container">      <div class="row">
+        <div class="col-md-10 col-lg-8 mx-auto text-center">
+
+          <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+          <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+
+          <form class="form-inline d-flex">
+            <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+            <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section bg-black">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Address</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">124 Devonshire Mall Windsor ON N9E 2M3</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-envelope text-primary "> | </i>
+              <i class="fas fa-mobile-alt text-primary"></i>
+              <h4 class="text-uppercase m-0">Contact</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">
+                <a href="#">customer@sportsline.com</a>
+                <div class="text-black-50">+1 (519) 987-4253</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-clock text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Operational hours</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">Mon - Fri 9 am to 5 pm<br>
+	Sat - Sun 10 am to 3 pm<br/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="social d-flex justify-content-center">
+        <a href="#" class="mx-2">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="mx-2">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="mx-2">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      Copyright &copy; Sports Line 2019
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
+
+</body>
+
+</html>

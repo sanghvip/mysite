@@ -1,0 +1,57 @@
+{% extends 'myapp/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block about %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+{% block product %}
+<header class="masthead">
+
+      <div class="container-fluid d-flex h-100 align-items-center">
+
+          <br/>
+
+            <div class="card h-80 w-100">
+
+
+            <div  class="card-header text-center">
+          {% if order %}
+
+            <!-- <h2 class="display-2" >List of product</h2> --->
+                <label  style="font-size: 35px; !important;">Your Orders</label>
+            </div>
+
+                <div class="card-body " style="text-align: center; background-color:#b3b7bb">
+
+
+                       {% for m in order %}
+                            <ul>
+                            {{ m.product}}
+                            </ul>
+                    <br/>
+                        {% endfor %}
+                    <br/>
+
+
+                </div>
+
+                    {% else %}
+                        <strong>There are no product by you !</strong>
+                    {% endif %}
+
+            </div>
+
+
+
+
+    </div>
+
+
+
+  </header>
+
+{% endblock %}

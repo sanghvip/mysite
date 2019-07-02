@@ -1,0 +1,59 @@
+{% extends 'myapp/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block about %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+{% block product %}
+<header class="masthead">
+
+      <div class="container-fluid d-flex h-100 align-items-center">
+
+          <br/>
+
+            <div class="card h-80 w-100">
+
+
+            <div  class="card-header text-center">
+            {% if prodlist%}
+
+            <!-- <h2 class="display-2" >List of product</h2> --->
+                <label  style="font-size: 35px; !important;">List of product</label>
+            </div>
+
+                <div class="card-body " style="text-align: center">
+
+
+                        {% for prod in prodlist %}
+                                <a href="{% url 'myapp:productdetail' prod.pk %}">{{ prod.name }}</a>
+                <br/>
+                        {% endfor %}
+                    <br/>
+
+                     <div class="col-auto  ">
+                        <a href="{% url 'myapp:place_order' %}" class="btn btn-primary centered">Place Order</a>
+
+                        </div>
+                    <br/>
+                </div>
+
+                    {% else %}
+                        <strong>There are no product!</strong>
+                    {% endif %}
+
+            </div>
+
+
+
+
+    </div>
+
+
+
+  </header>
+
+{% endblock %}

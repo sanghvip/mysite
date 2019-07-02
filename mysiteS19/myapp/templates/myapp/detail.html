@@ -1,0 +1,20 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block body_block %}
+
+Name:{{  cat_list_name }} <br>
+Warehouse:{{ cat_list_warehouse }}<br>
+{% if cat_list_name and cat_list_warehouse and product_list %}
+
+        <h2>List of Products:</h2>
+        <ol>
+            {% for product in product_list %}
+                <li> {{product.name}}  </li>
+            {% endfor %}
+        </ol>
+{% else %}
+    <strong>There are no available products!</strong>
+{% endif %}
+{% endblock %}

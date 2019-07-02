@@ -1,0 +1,54 @@
+{% extends 'myapp/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block about %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+{% block product %}
+<header class="masthead">
+
+      <div class="container-fluid d-flex h-100 align-items-center">
+
+          <br/>
+
+            <div class="card h-80 w-100">
+
+
+            <div  class="card-header text-center">
+
+
+            <!-- <h2 class="display-2" >List of product</h2> --->
+                <label  style="font-size: 35px; !important;">Login</label>
+            </div>
+
+                <div class="card-body " style="text-align: center">
+                    <form method="post" >
+                     {% csrf_token %}
+                     <label for="username">Username:</label>
+                     <input type="text" name="username" value="" id="username"><br>
+                     <label for="password">Password:</label>
+                     <input type="password" name="password" value="" id="password"><br>
+                     <input type="submit" class="btn btn-success" value="Login" />
+                 </form>
+
+                </div>
+
+
+            </div>
+
+
+
+
+    </div>
+
+
+
+  </header>
+
+{% endblock %}
+
+
